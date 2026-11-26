@@ -13,6 +13,7 @@ This repository is a growing portfolio of hands-on data wrangling work — each 
 | 🛒 [Sales Data Analysis](#-1-sales-data-analysis) | Cleans and analyzes retail sales transactions to uncover revenue, profit, and customer trends | `sales-data-analysis/sales_analysis.ipynb` |
 | 🎓 [Student Marks Analyzer](#-2-student-marks-analyzer) | Cleans messy student score data and analyzes academic performance | `student-marks-analyzer/student_performance_analysis.ipynb` |
 | 🏏 [IPL Match Analysis](#-3-ipl-match-analysis) | Cleans 12 seasons of IPL match data and analyzes team performance, toss impact, and home advantage | `ipl-match-analysis/cricket_analyz.ipynb` |
+| 💼 [Job Salary Analysis](#-4-job-salary-analysis) | Cleans 100K+ data science salary records and analyzes how role, experience, location, and work arrangement affect pay | `job-market-salary-analysis/job_salary_analysis.ipynb` |
 
 ---
 
@@ -95,7 +96,32 @@ Cleans 12 seasons (2008–2019) of IPL match data and analyzes what drives winni
 ### Tools
 `pandas` · `matplotlib` · `numpy`
 
---
+---
+ 
+## 💼 4. Job Salary Analysis
+ 
+Cleans a data science salary dataset (105,434 records, 2020–2025) and analyzes how job role, experience, company size, location, and work arrangement affect pay.
+ 
+### What it covers
+- **Data cleaning:** exact-duplicate removal (about half the rows), grouping 347 job titles into 14 categories with a manual override dictionary plus regex keyword rules (only 3% left unclassified), mapping coded columns to readable labels, validating `salary_in_usd` through implied exchange rates, and IQR outlier detection
+- **Analysis:**
+  - Median and average salary by job category
+  - Salary by experience level, company size, and work arrangement (on-site, hybrid, remote)
+  - Salary by company location and work year
+  - Employees living in a different country from their employer vs same-country employees
+- **Methodology:** insights are based on medians because salaries are right-skewed, and groups with fewer than 30 records are not interpreted
+- **Visualizations:** highest-paying job categories, heatmaps (category × experience, category × company size, experience × work arrangement), top-paying company locations, salary trends by year, and a same-country vs cross-border comparison
+### Key insights
+- AI & Machine Learning has the highest median salary ($170,000), followed by Management & Leadership ($161,000), while Data Analytics ($105,160) pays the least among the main categories
+- Experience is the strongest driver of pay — overall medians rise from $85,485 at entry level to $190,000 at executive level, and AI & Machine Learning doubles from $106,590 to $210,000
+- Fully remote and fully on-site roles share the same overall median ($140,000), so there is no consistent remote penalty or premium
+- US companies pay the most among the 15 most common locations (median $147,300), ahead of Canada ($120,000), Australia ($113,562), and the UK ($76,045)
+- The overall median rose sharply from 2020 to 2023, then stayed flat at about $140,000 in 2024 and 2025
+- Limitations: 84.5% of records are from US companies, and Small/Large companies, hybrid roles, and employees living abroad from their employer have few records, so those results are less reliable
+### Tools
+`pandas` · `matplotlib` · `seaborn` · `numpy`
+ 
+---
 
 ## 🗂️ Repository Structure
 
@@ -117,6 +143,12 @@ academic-data-wrangler/
 │   ├── data/
 │   │   └── matches.csv
 │   └── cricket_analyz.ipynb
+│
+├── job-market-salary-analysis/
+│   ├── data/
+│   │   └── salaries.csv
+│   └── job_salary_analysis.ipynb
+│
 └── README.md
 ```
 
@@ -147,6 +179,7 @@ jupyter notebook sales-data-analysis/sales_analysis.ipynb
 - **Python** – core language
 - **pandas** – data cleaning, transformation, and aggregation
 - **matplotlib** – data visualization
+- **seaborn** – statistical charts and heatmaps
 - **numpy** – numerical operations
 
 ---
